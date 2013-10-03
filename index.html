@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>Chart Test</title>
+	<script src='lib/jquery/jquery-1.8.2.min.js' type='text/javascript'></script>
+	<script src='lib/flot/jquery.flot-0.8.2.js' type='text/javascript'></script>
+	<script src='lib/flot/plugins/jquery.flot.time.js' type='text/javascript'></script>
+	<script src='lib/flot/plugins/jquery.flot.selection.js' type='text/javascript'></script>
+	<script src='lib/angularjs/angular.js' type='text/javascript'></script>
+	
+	<script src='js/app.js' type='text/javascript'></script>
+	<script src='js/flot-directives.js' type='text/javascript'></script>
+	<link rel="stylesheet" type="text/css" href="css/chart.css"/>
+</head>
+<body ng-app='chartApp' ng-controller='chartSampleController'>
+
+	Sample Size: <input ng-model='sampleSize' ng-change='initData(data)'>
+	<div>
+	Selection End: <input ng-model='max'>
+	</div>
+
+	<div>Chart Test</div>
+	
+	<chart chartname='chart1' data='data' min='min' max='max' options='options' hoverfunc='hover' 
+	clickfunc='plotclick' hoverdata='hoverdata' show-overview='true'></chart>
+	<!--
+	<div id="miniature" style="float:left;margin-left:20px">
+      <div id="overview" style="width:800px;height:100px"></div>
+      <p id="overviewLegend" style="margin-left:10px"></p>
+    </div>
+	-->
+	<div>
+	<label>Show CPU</label><input type='checkbox' ng-model='showCPU' ng-change='changeSeries()'/>
+	<label>Show Memory</label><input type='checkbox' ng-model='showMemory' ng-change='changeSeries()'/>
+	</div>
+	<div>
+	Hovered at <span ng-show='hoverdata.x' style='color:blue;'>{{hoverdata.x + ", " + hoverdata.y}}</span>
+	</div>
+	
+	
+</body>
+</html>
